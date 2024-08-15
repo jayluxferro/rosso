@@ -2,7 +2,6 @@ package http
 
 import (
 	"bytes"
-	"crypto/tls"
 	"errors"
 	"github.com/jayluxferro/rosso/strconv"
 	"net/http"
@@ -21,9 +20,6 @@ var Default_Client = Client{
 	client: http.Client{
 		CheckRedirect: func(*http.Request, []*http.Request) error {
 			return http.ErrUseLastResponse
-		},
-		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		},
 	},
 	status: http.StatusOK,
